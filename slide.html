@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="img-slide">
+        <div class="slide active">
+          <img src="http://media.steampowered.com/apps/csgo/blog/images/fb_image.png?v=6" alt="CS-GO">
+          <div class="info">
+              <h2>CS-GO</h2>
+               <p>Counter-Strike: Global Offensive (CS:GO) is a multiplayer first-person shooter developed by Valve and Hidden Path
+            Entertainment. It is the fourth game in the Counter-Strike series.</p>
+          </div>
+        </div>
+
+        <div class="slide">
+            <img src="https://wp.stanforddaily.com/wp-content/uploads/2020/08/image-2.png" alt="VAlORANT">
+            <div class="info">
+                <h2>VAlORANT</h2>
+                <p>Valorant (stylized as VALORANT) is a free-to-play first-person hero shooter developed and published by Riot Games, for
+                Microsoft Windows.</p>
+            </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://www.myhighplains.com/wp-content/uploads/sites/87/2021/04/NexstarThumbnail_041421_ApexLegends_1680x945.jpg?strip=1" alt="APEX LEGENDS">
+                <div class="info">
+                    <h2>APEX LEGENDS</h2>
+                    <p>Apex Legends is a free-to-play hero battle royale game developed by Respawn Entertainment and published by Electronic
+                    Arts. It was released for Microsoft Windows, PlayStation 4, and Xbox One in February 2019, and for Nintendo Switch in
+                    March 2021.</p>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://cdn2.unrealengine.com/14br-consoles-1920x1080-wlogo-1920x1080-432974386.jpg" alt="FORTNITE">
+                <div class="info">
+                    <h2>FORTNITE</h2>
+                    <p>Fortnite is an online video game developed by Epic Games and released in 2017. It is available in three distinct game
+                    mode versions that otherwise share the same general gameplay and game engine.</p>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <div class="btn active "></div>
+                <div class="btn"></div>
+                <div class="btn"></div>
+                <div class="btn"></div>
+
+            </div>
+
+
+    </div>    
+
+    <script type="text/javascript">
+     
+     var slides= document.querySelectorAll('.slide');
+     var btns = document.querySelectorAll('.btn')
+     let currentSlide =1;
+
+     //For Manual
+        var manualNav= function(manual){
+      
+             slides.forEach((slide) => {
+                 slide.classList.remove('active');
+
+                 btns.forEach((btn) =>{
+                  btn.classList.remove('active');
+                 });
+             });
+
+          slides[manual].classList.add('active');
+          btns[manual].classList.add('active');
+        }
+
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", ()=> {
+             manualNav(i);
+             currentSlide=i;
+            })
+        })
+
+        //with time
+
+        var repeat= function(activeClass){
+            let active=document.getElementsByClassName('active');
+            let i=1;
+        
+
+
+        var repeater =() =>{
+            setTimeout(function(){
+
+                slides[i].classList.add('active');
+                btns[i].classList.add('active');
+                i++;
+
+                if(slides.length==i){
+                    i=0;
+                }
+                if(i > slides.length){
+                    return;
+                }
+                repeater();
+            }, 5000);
+        }
+        repeater();
+    }
+    repeat();
+    </script>
+
+
+
+</body>
+</html>
